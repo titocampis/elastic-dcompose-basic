@@ -37,6 +37,11 @@ To test everything is running OK you can:
 curl -XGET -k -u elastic:changeme https://localhost:9200/_cluster/health?pretty
 ```
 
+You can also check the containers are running:
+```bash
+docker ps
+```
+
 When shut down your computer, you can execute the following command to, smoothly, stop the containers without losing the important data (it is stored in the Docker Volumes so it is persisted in the Linux System):
 ```bash
 docker-compose down
