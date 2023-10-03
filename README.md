@@ -34,7 +34,7 @@ To test everything is running OK you can:
 - After the cluster has started, open http://localhost:5601 in a web browser to access Kibana.
 - After the cluster has started, execute in some terminal:
 ```bash
-curl -XGET -k -u elastic:changeme https://localhost:9200/_cluster/health
+curl -XGET -k -u elastic:changeme https://localhost:9200/_cluster/health?pretty
 ```
 
 When shut down your computer, you can execute the following command to, smoothly, stop the containers without losing the important data (it is stored in the Docker Volumes so it is persisted in the Linux System):
