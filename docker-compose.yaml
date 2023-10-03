@@ -5,6 +5,8 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     volumes:
       - certs:/usr/share/elasticsearch/config/certs
+    networks:
+      - elastic
     user: "0"
     command: >
       bash -c '
@@ -65,6 +67,8 @@ services:
     volumes:
       - certs:/usr/share/elasticsearch/config/certs
       - esdata01:/usr/share/elasticsearch/data
+    networks:
+      - elastic
     ports:
       - ${ES_PORT}:9200
     environment:
@@ -108,6 +112,8 @@ services:
     volumes:
       - certs:/usr/share/elasticsearch/config/certs
       - esdata02:/usr/share/elasticsearch/data
+    networks:
+      - elastic
     environment:
       - node.name=es02
       - cluster.name=${CLUSTER_NAME}
@@ -151,6 +157,8 @@ services:
     volumes:
       - certs:/usr/share/kibana/config/certs
       - kibanadata:/usr/share/kibana/data
+    networks:
+      - elastic
     ports:
       - ${KIBANA_PORT}:5601
     environment:
@@ -179,3 +187,7 @@ volumes:
     driver: local
   kibanadata:
     driver: local
+
+networks:
+  elastic:
+    driver: bridge
